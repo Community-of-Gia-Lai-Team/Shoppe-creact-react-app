@@ -1,0 +1,166 @@
+.wrapper {
+    background-color: #f5f5f5;
+
+    .container {
+        padding-top: 20px;
+    }
+
+    .item-faqs-list {
+        padding: 0;
+        list-style: none;
+        margin-top: 15px;
+
+        li {
+            font-size: 13px;
+            padding: 6px 0;
+
+            &:hover {
+                color: #ee4d2d;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .item-faqs-list-bank {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            width: 33%;
+        }
+    }
+
+    .item-faqs {
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+
+    .visa-bank {
+        background-size: 1463.64% 983.333%;
+        background-position: 75.8667% 6.28931%;
+    }
+
+    .masster-bank {
+        background-size: 1463.64% 610.345%;
+        background-position: 51.2% 68.9189%;
+    }
+
+    .JCB-bank {
+        background-size: 1463.64% 769.565%;
+        background-position: 51.2% 38.3117%;
+    }
+
+    .amx-bank {
+        background-size: 1610% 804.545%;
+        background-position: 1.3245% 6.45161%;
+    }
+
+    .cod-bank {
+        background-size: 1610% 610.345%;
+        background-position: 80.3974% 32.4324%;
+    }
+
+    .tragop-bank {
+        background-size: 1463.64% 610.345%;
+        background-position: 80.9333% 65.5405%;
+    }
+
+    .download {
+        img {
+            width: 90px;
+            display: block;
+            margin-top: 6px;
+        }
+    }
+
+    .item-g-t-r {
+        .item-faqs-list-item {
+            display: flex;
+            align-items: center;
+        }
+
+        svg {
+            font-size: 16px;
+            margin-right: 6px;
+        }
+    }
+
+    .directional {
+        padding-top: 40px;
+        border-top: 2px solid #ccc;
+
+        .country {
+            display: flex;
+            justify-content: space-between;
+
+            div {
+                display: flex;
+                align-items: center;
+
+                .demo {
+                    border: none;
+                }
+
+                a {
+                    margin-left: 4px;
+                    border-left: 1px solid #ccc;
+                    padding-left: 4px;
+                    color: rgb(74, 59, 59);
+                }
+            }
+        }
+
+        .policy {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            margin-top: 80px;
+            justify-content: space-around;
+
+            a {
+                font-size: 14px;
+                color: #666;
+                position: relative;
+
+                p {
+                    position: absolute;
+                    width: 1px;
+                    height: 14px;
+                    background-color: #666;
+                    right: -20%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+
+        .Commerce {
+            width: 20%;
+            display: flex;
+            justify-content: space-around;
+            margin: 0 auto;
+            margin-top: 60px;
+
+            .b-c-t {
+                width: 8.4rem;
+                height: 3.4rem;
+                background-size: 670.8333333333334% 393.3333333333333%;
+                background-position: 99.56204379562044% 86.36363636363636%;
+            }
+        }
+
+        .introduce {
+            padding-bottom: 6px;
+
+            .company {
+                margin: 15px 0;
+            }
+
+            p {
+                color: rgba(0, 0, 0, 0.65);
+                font-size: 14px;
+                text-align: center;
+            }
+        }
+    }
+}

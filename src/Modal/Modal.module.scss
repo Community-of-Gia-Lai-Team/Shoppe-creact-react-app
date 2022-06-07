@@ -1,0 +1,51 @@
+.heading {
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+    height: 42px;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .left-heading {
+        display: flex;
+        align-items: center;
+
+        h3 {
+            margin-left: 20px;
+            font-size: 20px;
+            margin-top: 6px;
+        }
+
+        .logoSVG {
+            height: 42px;
+        }
+    }
+}
+
+.container {
+    background-color: rgb(238, 78, 46);
+    height: 600px;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    .container-content {
+        width: 1040px;
+        height: 600px;
+        z-index: 1000;
+        margin: 0 auto;
+    }
+}
+
+.form-login-registers {
+    width: 400px;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 3px 10px 0 rgb(0 0 0 / 14%);
+    position: absolute;
+    right: 256px;
+    border-radius: 4px;
+    overflow: hidden;
+    top: 70px;
+}

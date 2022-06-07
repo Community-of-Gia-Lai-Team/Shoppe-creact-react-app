@@ -1,0 +1,149 @@
+.wrapper {
+    width: 100%;
+    background-color: #fff;
+
+    .login {
+        height: 482px;
+    }
+
+    .register {
+        height: 429px;
+    }
+}
+
+.parents {
+    margin: 0 16px;
+
+    .login-user {
+        height: 102px;
+        display: flex;
+        align-items: center;
+
+        h3 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+    }
+}
+
+.parents-container {
+    height: 380px;
+
+    .text-ch-s {
+        height: 40px;
+        border-radius: 2px;
+        border-radius: 2px;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.14);
+    }
+
+    .input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        padding-left: 10px;
+    }
+
+    .text-passWork {
+        .input {
+            width: 85%;
+        }
+
+        button {
+            height: 100%;
+            width: 44px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+    }
+
+    .text-passWork {
+        margin-top: 30px;
+    }
+
+    .sub-mit-btn {
+        margin-top: 30px;
+        height: 40px;
+        width: 100%;
+        background-color: #ee4d2d;
+        border-radius: 4px;
+
+        button {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    }
+
+    .faqs-password {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+
+        a {
+            font-size: 13px;
+        }
+    }
+
+    .login-add-app {
+        height: 40px;
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            height: 100%;
+            border-radius: 2px;
+            border: none;
+            outline: none;
+            width: 105px;
+            box-sizing: border-box;
+            border: 1px solid rgba(0, 0, 0, 0.26);
+            background-color: rgb(255, 255, 255);
+            color: rgba(0, 0, 0, 0.87);
+            padding: 0px 2px;
+            border-radius: 2px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                margin-right: 10px;
+                font-size: 16px;
+            }
+
+            &:nth-child(1) {
+                svg {
+                    color: rgb(110, 110, 238);
+                }
+            }
+
+            &:nth-child(2) {
+                svg {
+                    color: rgb(217, 243, 49);
+                }
+            }
+        }
+    }
+
+    .text-node-faqs {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 14px;
+
+        a {
+            margin-left: 6px;
+            color: #ee4d2d;
+        }
+    }
+}
