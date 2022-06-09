@@ -65,7 +65,7 @@ function RenderPageNew({ data }) {
                                         <div className={cx('price-reducer-1')}>
                                             ₫{Number(data.price) - 18}.000 - {data.price}
                                         </div>
-                                        <div className={cx('price-reducer-2')}>37% giảm</div>
+                                        <div className={cx('price-reducer-2')}>{data.reducerprice}% giảm</div>
                                     </div>
                                 </div>
                                 <div className={cx('le-hoi')}>
