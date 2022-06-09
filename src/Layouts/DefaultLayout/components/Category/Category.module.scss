@@ -1,0 +1,128 @@
+.category {
+    height: 60px;
+    display: flex;
+    font-weight: 400;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 2px;
+
+    .left-category {
+        margin-left: 15px;
+        display: flex;
+        align-items: center;
+
+        h3 {
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .btn-category {
+            height: 34px;
+            width: 90px;
+            border: none;
+            outline: none;
+            background-color: #fff;
+            border-radius: 2px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: #ee4d2d;
+            color: #fff;
+            cursor: default;
+        }
+
+        .price-select {
+            position: relative;
+            width: 200px;
+            height: 34px;
+            background-color: #fff;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            padding-left: 6px;
+            border-radius: 2px;
+            z-index: 10000000;
+            cursor: pointer;
+
+            svg {
+                margin-left: auto;
+                margin-right: 10px;
+            }
+
+            ul {
+                position: absolute;
+                top: 115%;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                border-radius: 2px;
+                list-style: none;
+                box-shadow: 0 1px 3.125rem 0 rgb(0 0 0 / 20%);
+                display: none;
+                opacity: 0;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: -6px;
+                    right: 0;
+                    left: 0;
+                    height: 6px;
+                    background-color: transparent;
+                }
+
+                li {
+                    padding: 6px 0;
+                    padding-left: 10px;
+
+                    &:hover {
+                        color: #ee4d2d;
+                    }
+                }
+            }
+
+            &:hover {
+                ul {
+                    opacity: 1;
+                    transition: all linear 0.3s;
+                    display: block;
+                    color: #000;
+                }
+            }
+        }
+
+        .active-parents {
+            color: #ee4d2d;
+        }
+    }
+
+    .next-category {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+
+        p {
+            color: #ee4d2d;
+            display: block;
+        }
+
+        div {
+            margin-left: 20px;
+            button {
+                margin-right: 10px;
+                height: 34px;
+                width: 36px;
+                border: 1px solid #ccc;
+                border-radius: 2px;
+                color: #666;
+                cursor: pointer;
+            }
+            .disabled {
+                opacity: 0.5;
+                pointer-events: none;
+            }
+        }
+    }
+}

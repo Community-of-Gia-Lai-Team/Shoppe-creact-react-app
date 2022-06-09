@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -10,6 +11,7 @@ import {
     faCartArrowDown,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import styles from './Nav.module.scss';
 import QrImg from '@/assets/img/qrdownload.png';
@@ -20,10 +22,23 @@ import { Logo } from '@/components/icons';
 import Search from '../components/search';
 
 import NotifyCart from '@/Layouts/DefaultLayout/components/NotifyCart';
+import Cart from '../components/Cart';
 
 const cx = classNames.bind(styles);
 
 function Nav() {
+    const [Resultcart, setResultcart] = useState([]);
+
+    const UserAccount = useSelector((state) => state.user);
+
+    useEffect(() => {
+        fetch('https://api-shope-done.herokuapp.com/products')
+            .then((response) => response.json())
+            .then((response) => {
+                setResultcart(response);
+            });
+    }, []);
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('grid wide', 'parents')}>
@@ -102,15 +117,27 @@ function Nav() {
                                 </ul>
                             </div>
                         </div>
-                        <Link to="/login-register/register">
-                            <div className={cx('nav-btn-tab-one')}>Đăng ký</div>
-                        </Link>
-                        <Link to="/login-register/login">
-                            <div className={cx('nav-btn-tab-one')}>
-                                <p className={cx('position-height')}></p>
-                                Đăng nhập
+
+                        {UserAccount.length > 0 ? (
+                            <div className={cx('login-true')}>
+                                <div className={cx('img-avatar')}>
+                                    <img src="https://avatars.githubusercontent.com/u/97645406?v=4" alt="" />
+                                </div>
+                                <div className={cx('text-name')}>{UserAccount[0].user.useraccount}</div>
                             </div>
-                        </Link>
+                        ) : (
+                            <>
+                                <Link to="/login-register/register">
+                                    <div className={cx('nav-btn-tab-one')}>Đăng ký</div>
+                                </Link>
+                                <Link to="/login-register/login">
+                                    <div className={cx('nav-btn-tab-one')}>
+                                        <p className={cx('position-height')}></p>
+                                        Đăng nhập
+                                    </div>
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </div>
                 <div className={cx('search-and-login')}>
@@ -126,7 +153,7 @@ function Nav() {
                                 maxLength="128"
                                 placeholder="GIÁ GIẢM THÀNH VIÊN -50%"
                             />
-                            <div className={cx('search-list-container')}>
+                            <div className={cx('search-list-container')} onMouseDown={(e) => e.preventDefault()}>
                                 <Search />
                             </div>
                         </div>
@@ -135,7 +162,12 @@ function Nav() {
                         </button>
                     </div>
                     <div className={cx('cart-home')}>
-                        <FontAwesomeIcon icon={faCartArrowDown} />
+                        <div className={cx('search-cart-icon')}>
+                            <FontAwesomeIcon icon={faCartArrowDown} />
+                            <div className={cx('cart-list-container')}>
+                                <Cart resultCart={Resultcart} />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

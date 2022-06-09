@@ -8,7 +8,7 @@ import Footer from '@/components/pages/Footer';
 
 const cx = classNames.bind(styles);
 
-function Modal({ Uselink, title }) {
+function Modal({ Uselink, title, user }) {
     return (
         <div className={cx('wrapper')}>
             <div>
@@ -31,7 +31,7 @@ function Modal({ Uselink, title }) {
                         }}
                     >
                         <div className={cx('form-login-registers')}>
-                            <Uselink />
+                            <Uselink user={user} />
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,25 @@
+.wrapper {
+    h3 {
+        padding: 10px 0;
+        padding-left: 15px;
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+        border-radius: 2px;
+        overflow: hidden;
+        z-index: 10000;
+
+        li {
+            list-style: none;
+            padding: 7px 0;
+            padding-left: 15px;
+
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, 0.05);
+            }
+        }
+    }
+}

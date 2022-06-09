@@ -14,6 +14,10 @@ body {
     overflow-y: overlay;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 // scrollbar
 
 html *::-webkit-scrollbar {
