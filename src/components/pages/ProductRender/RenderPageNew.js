@@ -15,9 +15,10 @@ function RenderPageNew({ data }) {
                 <Link to="/" className={cx('home-back')}>
                     Shoppe
                 </Link>
-                <FontAwesomeIcon icon={faAngleRight} />
-                <span>Thời trang nữ</span>
-                <p>Áo Thun Xanh Lá UNDER BROKEN Nam Nữ Ulzzang Unisex 1hitshop</p>
+                <FontAwesomeIcon icon={faAngleRight} className={cx('icon-d-r-t-e')} />
+                <span>Thời trang </span>
+                <FontAwesomeIcon icon={faAngleRight} className={cx('icon-d-r-t-e')} />
+                <p>{data.name}</p>
             </div>
             <div className={cx('content')}>
                 <div className={cx('row', 'container-po')}>
