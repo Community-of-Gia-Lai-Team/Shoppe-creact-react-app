@@ -1,14 +1,22 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
+import { useDispatch } from 'react-redux';
 
 import styles from './ProductRender.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { QuestionsIcon, ReducerSales, ShoppeBrands, StarIcon, FreeShip } from '@/components/icons';
+import { AddProductNewCart } from './../../../Actions/AddProductNewCart';
 
 const cx = classNames.bind(styles);
 
 function RenderPageNew({ data }) {
+    const disPatch = useDispatch();
+
+    const handleAddCart = (data) => {
+        disPatch(AddProductNewCart(data));
+    };
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('options')}>
@@ -140,7 +148,7 @@ function RenderPageNew({ data }) {
                                     </div>
                                     <div className={cx('add_product-and-buy')}>
                                         <div className={cx('add_product-and-buy-1')}>
-                                            <button>
+                                            <button onClick={() => handleAddCart(data)}>
                                                 <FontAwesomeIcon icon={faCartArrowDown} />
                                                 Thêm Vào Giỏ Hàng
                                             </button>

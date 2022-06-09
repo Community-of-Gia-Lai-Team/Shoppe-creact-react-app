@@ -53,16 +53,6 @@ function App() {
                         )
                     }
                 />
-                <Route
-                    path=""
-                    element={
-                        UserAccount.length > 0 ? (
-                            <Modal Uselink={Register} user={user} title="Đăng nhập" />
-                        ) : (
-                            <Modal Uselink={Login} user={user} title="Đăng ky" />
-                        )
-                    }
-                />
                 <Route path="/login-register/login" element={<Modal Uselink={Login} user={user} title="Đăng nhập" />} />
                 <Route
                     path="/login-register/register"

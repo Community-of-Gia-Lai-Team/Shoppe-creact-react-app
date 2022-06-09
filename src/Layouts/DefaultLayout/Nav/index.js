@@ -27,17 +27,8 @@ import Cart from '../components/Cart';
 const cx = classNames.bind(styles);
 
 function Nav() {
-    const [Resultcart, setResultcart] = useState([]);
-
     const UserAccount = useSelector((state) => state.user);
-
-    useEffect(() => {
-        fetch('https://api-shope-done.herokuapp.com/products')
-            .then((response) => response.json())
-            .then((response) => {
-                setResultcart(response);
-            });
-    }, []);
+    const ItemCartCount = useSelector((state) => state.AdNewCART.list);
 
     return (
         <div className={cx('wrapper')}>
@@ -121,7 +112,7 @@ function Nav() {
                         {UserAccount.length > 0 ? (
                             <div className={cx('login-true')}>
                                 <div className={cx('img-avatar')}>
-                                    <img src="https://avatars.githubusercontent.com/u/97645406?v=4" alt="" />
+                                    <img src="https://cf.shopee.vn/file/95be9e5f9b3d5d20afa8299b20b6c8f0" alt="" />
                                 </div>
                                 <div className={cx('text-name')}>{UserAccount[0].user.useraccount}</div>
                             </div>
@@ -163,9 +154,12 @@ function Nav() {
                     </div>
                     <div className={cx('cart-home')}>
                         <div className={cx('search-cart-icon')}>
+                            {ItemCartCount.length > 0 && (
+                                <div className={cx('search-counters')}>{ItemCartCount.length}</div>
+                            )}
                             <FontAwesomeIcon icon={faCartArrowDown} />
                             <div className={cx('cart-list-container')}>
-                                <Cart resultCart={Resultcart} />
+                                <Cart />
                             </div>
                         </div>
                     </div>

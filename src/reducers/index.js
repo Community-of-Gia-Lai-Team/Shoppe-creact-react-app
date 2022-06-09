@@ -6,6 +6,7 @@ import ActiveBTn from './activeBtn';
 import ActivePrice from './selectPrice';
 import ActiveProductsPagesBtn from './BtnActiveProductsPages';
 import ActivePath from './ActiePath';
+import AdNewCART from './AddNewcart';
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     ActivePrice: ActivePrice,
     ActiveProductsPagesBtn: ActiveProductsPagesBtn,
     ActivePath: ActivePath,
+    AdNewCART: AdNewCART,
 });
 
 export default rootReducer;

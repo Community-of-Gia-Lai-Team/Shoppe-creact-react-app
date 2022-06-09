@@ -1,6 +1,11 @@
 .wrapper {
     height: var(--header-height);
     background-image: var(--nc-primary-gradient);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000000000000000;
 }
 
 .parents {
@@ -349,6 +354,8 @@
         position: relative;
 
         .search-cart-icon {
+            position: relative;
+
             svg {
                 cursor: pointer;
                 font-size: 26px;
@@ -359,12 +366,28 @@
                     display: block;
                 }
             }
+
+            .search-counters {
+                position: absolute;
+                color: #d0011b;
+                border-color: #d0011b;
+                border-radius: 9999999px;
+                background-color: #fff;
+                min-width: 25px;
+                display: flex;
+                justify-content: center;
+                height: 20px;
+                border: 1px solid;
+                align-items: center;
+                top: -9px;
+                right: -12px;
+            }
         }
 
         .cart-list-container {
             position: absolute;
-            right: 32px;
-            top: 165%;
+            right: -25px;
+            top: 134%;
             width: 400px;
 
             // height: 410px;

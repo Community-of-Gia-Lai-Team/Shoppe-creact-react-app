@@ -1,30 +1,49 @@
 import className from 'classnames/bind';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import styles from './Cart.module.scss';
+import { ActivePathADD } from '@/Actions/ActivePathActions';
 
 const cx = className.bind(styles);
 
-function Cart({ resultCart }) {
+function Cart({ res }) {
+    const ItemCart = useSelector((state) => state.AdNewCART.list);
+
+    const disPatch = useDispatch();
+
+    const handleActivePath = (path) => {
+        disPatch(ActivePathADD(path));
+    };
+
     return (
         <div className={cx('wrapper')}>
-            {resultCart.length > 0 ? (
+            {ItemCart.length > 0 ? (
                 <div>
                     <h3>Sản phẩm mới thêm</h3>
-                    <ul className={cx('list-cart')}>
-                        {resultCart.map((res) => (
-                            <li key={res.id}>
-                                <div className={cx('img-cart')}>
-                                    <img src={res.img} alt="" />
-                                </div>
-                                <div className={cx('title-cart')}>
-                                    <h4>{res.name}</h4>
-                                </div>
-                                <div className={cx('price-cart')}>
-                                    <p>Đ{res.price}</p>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
+                    {ItemCart.map((item, index) => (
+                        <Link
+                            to={item.link}
+                            className={cx('link-a-t-s')}
+                            key={index}
+                            onClick={() => handleActivePath(item.link)}
+                            type="_blank"
+                        >
+                            <ul className={cx('list-cart')}>
+                                <li key={item.id}>
+                                    <div className={cx('img-cart')}>
+                                        <img src={item.img} alt="" />
+                                    </div>
+                                    <div className={cx('title-cart')}>
+                                        <h4>{item.name}</h4>
+                                    </div>
+                                    <div className={cx('price-cart')}>
+                                        <p>Đ{item.price}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </Link>
+                    ))}
                 </div>
             ) : (
                 <div>
