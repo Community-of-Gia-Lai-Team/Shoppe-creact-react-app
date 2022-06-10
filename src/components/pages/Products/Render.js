@@ -59,7 +59,7 @@ function Render({ data }) {
                                 <StarIcon />
                                 <StarIcon />
                             </div>
-                            <div className={cx('da-ban-count')}>Đã bán 142</div>
+                            <div className={cx('da-ban-count')}>Đã bán {data.sold}</div>
                         </div>
                         <div className={cx('addRess')}>{data.addRess}</div>
                     </div>
