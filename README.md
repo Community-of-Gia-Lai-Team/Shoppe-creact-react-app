@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+# Facebook của tôi
+https://www.facebook.com/profle.php.id.3107.100035504550108
+
 App đượi xây dựng Băng React
 
 ## Available Scripts
