@@ -27,3 +27,13 @@ It correctly bundles React in production mode and optimizes the build for the be
 Một Số Ảnh Demo
 ![image](https://user-images.githubusercontent.com/97645406/173214790-74420750-7336-4bb6-be61-eb2a6c199f68.png)
 
+Layout đăng ký
+
+![image](https://user-images.githubusercontent.com/97645406/173214806-1264c678-5335-47e7-b398-5f4678e2ee9f.png)
+
+Layout Production
+
+![image](https://user-images.githubusercontent.com/97645406/173214830-227b233f-84fa-4a84-a5b7-507293bda0b0.png)
+
+=>> Cảm ơn bạn đã ghé qua github của Tôi ❤️❤️
+
