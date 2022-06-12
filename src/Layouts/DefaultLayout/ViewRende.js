@@ -9,15 +9,7 @@ import Products from '@/components/pages/Products';
 const cx = className.bind(styles);
 
 function ViewRender() {
-    const [stateProducts, setStateProducts] = useState([]);
-
-    useEffect(() => {
-        fetch('https://api-shope-done.herokuapp.com/products')
-            .then((res) => res.json())
-            .then((res) => {
-                setStateProducts(res);
-            });
-    }, []);
+    const stateProducts = JSON.parse(localStorage.getItem('Products')) || [];
 
     return (
         <div className={cx('row')}>

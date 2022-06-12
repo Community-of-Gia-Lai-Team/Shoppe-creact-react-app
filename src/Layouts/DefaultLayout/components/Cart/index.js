@@ -9,6 +9,7 @@ const cx = className.bind(styles);
 
 function Cart({ res }) {
     const ItemCart = useSelector((state) => state.AdNewCART.list);
+    const PathActive = useSelector((state) => state.ActivePath.list);
 
     const disPatch = useDispatch();
 
@@ -23,7 +24,7 @@ function Cart({ res }) {
                     <h3>Sản phẩm mới thêm</h3>
                     {ItemCart.map((item, index) => (
                         <Link
-                            to={item.link}
+                            to={PathActive}
                             className={cx('link-a-t-s')}
                             key={index}
                             onClick={() => handleActivePath(item.link)}

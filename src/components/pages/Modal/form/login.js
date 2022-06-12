@@ -43,6 +43,7 @@ function Login({ user }) {
                 password: passWord,
             },
         }).then((data) => {
+            localStorage.setItem('user', JSON.stringify([data]));
             disPatch(addNewUser(data));
         });
     };

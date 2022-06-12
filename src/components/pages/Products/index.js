@@ -42,6 +42,20 @@ function Products({ Res }) {
                     // eslint-disable-next-line array-callback-return
                     Res.map((data, index) => {
                         if (IDActiveProduct === 0) {
+                            if (data) {
+                                if (IdActiveProductsPages === 0) {
+                                    if (index < 10) {
+                                        return <Render data={data} key={data.id} />;
+                                    }
+                                }
+                                if (IdActiveProductsPages === 1) {
+                                    if (index > 10) {
+                                        return <Render data={data} key={data.id} />;
+                                    }
+                                }
+                            }
+                        }
+                        if (IDActiveProduct === 1) {
                             if (data.favirote && data.reducerprice.length > 0) {
                                 if (IdActiveProductsPages === 0) {
                                     if (index < 10) {
@@ -56,23 +70,8 @@ function Products({ Res }) {
                             }
                         }
 
-                        if (IDActiveProduct === 1) {
-                            if (data.favirote) {
-                                if (IdActiveProductsPages === 0) {
-                                    if (index < 10) {
-                                        return <Render data={data} key={data.id} />;
-                                    }
-                                }
-                                if (IdActiveProductsPages === 1) {
-                                    if (index > 10) {
-                                        return <Render data={data} key={data.id} />;
-                                    }
-                                }
-                            }
-                        }
-
                         if (IDActiveProduct === 2) {
-                            if (data) {
+                            if (data.favirote) {
                                 if (IdActiveProductsPages === 0) {
                                     if (index < 10) {
                                         return <Render data={data} key={data.id} />;

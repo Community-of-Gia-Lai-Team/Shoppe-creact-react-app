@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -11,7 +10,7 @@ import {
     faCartArrowDown,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import styles from './Nav.module.scss';
 import QrImg from '@/assets/img/qrdownload.png';
@@ -20,6 +19,7 @@ import GoogleStoreImg from '@/assets/img/ggplay.png';
 import AppGrenlyStoreImg from '@/assets/img/appgay.png';
 import { Logo } from '@/components/icons';
 import Search from '../components/search';
+import { addNewUser } from '@/Actions/user';
 
 import NotifyCart from '@/Layouts/DefaultLayout/components/NotifyCart';
 import Cart from '../components/Cart';
@@ -29,6 +29,15 @@ const cx = classNames.bind(styles);
 function Nav() {
     const UserAccount = useSelector((state) => state.user);
     const ItemCartCount = useSelector((state) => state.AdNewCART.list);
+
+    const User = JSON.parse(localStorage.getItem('user')) || UserAccount;
+
+    const disPathCh = useDispatch();
+
+    const handleLoginOut = () => {
+        localStorage.setItem('user', JSON.stringify([]));
+        disPathCh(addNewUser([]));
+    };
 
     return (
         <div className={cx('wrapper')}>
@@ -109,12 +118,19 @@ function Nav() {
                             </div>
                         </div>
 
-                        {UserAccount.length > 0 ? (
+                        {User.length > 0 ? (
                             <div className={cx('login-true')}>
                                 <div className={cx('img-avatar')}>
                                     <img src="https://cf.shopee.vn/file/95be9e5f9b3d5d20afa8299b20b6c8f0" alt="" />
                                 </div>
-                                <div className={cx('text-name')}>{UserAccount[0].user.useraccount}</div>
+                                <div className={cx('text-name')}>{User[0].user.useraccount}</div>
+                                <div className={cx('login-out-and-ld')}>
+                                    <ul>
+                                        <li>Tài khoản của tôi</li>
+                                        <li>Đơn mua</li>
+                                        <li onClick={handleLoginOut}>Đăng xuất</li>
+                                    </ul>
+                                </div>
                             </div>
                         ) : (
                             <>

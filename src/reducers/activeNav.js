@@ -1,5 +1,5 @@
 const initialState = {
-    list: ['Bán chạy', 'Ưa thích', 'Sản phẩm của shop', 'Yêu thích bởi tôi'],
+    list: ['Sản phẩm của shop', 'Bán chạy', 'Ưa thích', 'Yêu thích bởi tôi'],
     idActive: 0,
 };
 

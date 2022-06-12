@@ -21,17 +21,15 @@ function App() {
     const PathActive = useSelector((state) => state.ActivePath.list);
     const UserAccount = useSelector((state) => state.user);
 
+    const User = JSON.parse(localStorage.getItem('user')) || [];
+
     const [Products, setProducts] = useState([]);
 
-    const [user, setUser] = useState();
+    localStorage.setItem('Products', JSON.stringify(Products));
+
+    const ProductsLocal = JSON.parse(localStorage.getItem('Products')) || [];
 
     useEffect(() => {
-        fetch('https://api-shope-done.herokuapp.com/users')
-            .then((response) => response.json())
-            .then((response) => {
-                setUser(response);
-            });
-
         fetch('https://api-shope-done.herokuapp.com/products')
             .then((response) => response.json())
             .then((response) => {
@@ -46,18 +44,15 @@ function App() {
                 <Route
                     path={PathActive.length > 0 ? PathActive : ''}
                     element={
-                        UserAccount.length > 0 ? (
-                            <DefaultLayoutAndPages Render={ProductRender} path={PathActive} data={Products} />
+                        User.length > 0 ? (
+                            <DefaultLayoutAndPages Render={ProductRender} path={PathActive} data={ProductsLocal} />
                         ) : (
-                            <Modal Uselink={Login} user={user} title="Đăng Nhập" />
+                            <Modal Uselink={Login} title="Đăng Nhập" />
                         )
                     }
                 />
-                <Route path="/login-register/login" element={<Modal Uselink={Login} user={user} title="Đăng nhập" />} />
-                <Route
-                    path="/login-register/register"
-                    element={<Modal Uselink={Register} user={user} title="Đăng ký" />}
-                />
+                <Route path="/login-register/login" element={<Modal Uselink={Login} title="Đăng nhập" />} />
+                <Route path="/login-register/register" element={<Modal Uselink={Register} title="Đăng ký" />} />
             </Routes>
         </div>
     );
