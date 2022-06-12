@@ -4,7 +4,7 @@ App đượi xây dựng Băng React
 
 ## Available Scripts
 
-Bạn Có Thể Chạy LệnhLệnh
+Bạn Có Thể Chạy Lệnh
 
 ### `npm start`
 
