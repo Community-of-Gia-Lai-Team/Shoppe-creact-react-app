@@ -1,10 +1,10 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+App đượi xây dựng Băng React
 
 ## Available Scripts
 
-In the project directory, you can run:
+Bạn Có Thể Chạy LệnhLệnh
 
 ### `npm start`
 
