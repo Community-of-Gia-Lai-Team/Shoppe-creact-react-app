@@ -260,8 +260,8 @@ function RenderPageNew({ data }) {
                     <div className={cx('description-r-tr')}>
                         <div className={cx('product-title')}>Chi Tiết Sản Phẩm</div>
                         <div className={cx('description-p-tr')}>
-                            {data.description.map((des) => (
-                                <p>{des}</p>
+                            {data.description.map((des, index) => (
+                                <p key={index}>{des}</p>
                             ))}
                         </div>
                     </div>
