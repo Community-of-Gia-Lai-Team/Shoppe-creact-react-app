@@ -40,6 +40,7 @@ function Cart({ res }) {
                                     </div>
                                     <div className={cx('price-cart')}>
                                         <p>Đ{item.price}</p>
+                                        <span>x1</span>
                                     </div>
                                 </li>
                             </ul>

@@ -8,6 +8,7 @@ import DefaultLayoutAndPages from '@/Layouts/DefaultLayout';
 import { Login, Register } from '@/components/pages/Modal/form';
 import ViewRender from './Layouts/DefaultLayout/ViewRende';
 import ProductRender from './components/pages/ProductRender/index';
+import Myinfo from './components/pages/Myinfo';
 
 App.propTypes = {
     Products: propTypes.array,
@@ -19,7 +20,6 @@ App.defaultProps = {
 
 function App() {
     const PathActive = useSelector((state) => state.ActivePath.list);
-    const UserAccount = useSelector((state) => state.user);
 
     const User = JSON.parse(localStorage.getItem('user')) || [];
 
@@ -51,6 +51,7 @@ function App() {
                         )
                     }
                 />
+                <Route path={encodeURI(User[0].user.useraccount)} element={<DefaultLayoutAndPages Render={Myinfo} />} />
                 <Route path="/login-register/login" element={<Modal Uselink={Login} title="Đăng nhập" />} />
                 <Route path="/login-register/register" element={<Modal Uselink={Register} title="Đăng ký" />} />
             </Routes>

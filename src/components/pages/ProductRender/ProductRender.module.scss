@@ -524,6 +524,13 @@
                                 padding: 0;
                                 border: 1px solid rgba(0, 0, 0, 0.09);
                                 margin: 0;
+                                cursor: pointer;
+                                user-select: none;
+                            }
+
+                            .disable {
+                                pointer-events: none;
+                                cursor: no-drop;
                             }
                         }
 
@@ -581,6 +588,220 @@
             }
         }
         padding-bottom: 20px;
+    }
+
+    .page-shop {
+        margin-top: 25px;
+        padding: 25px;
+        display: flex;
+        height: 124px;
+        background-color: #fff;
+        border-radius: 2px;
+        padding-bottom: 6px;
+        overflow: hidden;
+
+        .left-page-shop {
+            width: 40%;
+            display: flex;
+            border-right: 1px solid #ccc;
+            align-items: center;
+
+            .img-page-shop {
+                width: 78px;
+                height: 78px;
+                position: relative;
+                margin-right: 20px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+
+                .banner-favirote-page-shop {
+                    display: inline-block;
+                    position: absolute;
+                    background-color: #ee4d2d;
+                    border-top-right-radius: 2px;
+                    border-bottom-right-radius: 2px;
+                    white-space: nowrap;
+                    color: #fff;
+                    font-size: 13px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: -2px;
+                }
+            }
+
+            .name-online {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .name-online-title {
+                    font-weight: 400;
+                    font-size: 16px;
+                    color: rgba(0, 0, 0, 0.87);
+                    margin: 0;
+                }
+
+                .name-online-online {
+                    font-size: 16px;
+                    color: rgba(0, 0, 0, 0.54);
+                    text-transform: capitalize;
+                }
+
+                .name-online-view-shop {
+                    margin-top: 8px;
+                    display: flex;
+                    align-items: center;
+
+                    button {
+                        height: 34px;
+                        flex-direction: row;
+                        text-transform: capitalize;
+                        border-radius: 2px;
+                        cursor: pointer;
+
+                        svg {
+                            margin-right: 6px;
+                        }
+
+                        &:nth-child(1) {
+                            padding: 0 15px;
+                            margin-right: 10px;
+                            color: #ee4d2d;
+                            background: var(--brand-primary-light-color);
+                            color: var(--brand-primary-color);
+                            border: 1px solid var(--brand-primary-color);
+                            box-shadow: 0 1px 1px 0 rgb(0 0 0 / 3%);
+                        }
+
+                        &:nth-child(2) {
+                            padding: 0 15px;
+                            display: flex;
+                            align-items: center;
+                            background: #fff;
+                            color: #555;
+                            border: 1px solid rgba(0, 0, 0, 0.09);
+                            box-shadow: 0 1px 1px 0 rgb(0 0 0 / 3%);
+
+                            svg {
+                                width: 14px;
+                                height: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .right-page-shop {
+            padding-left: 55px;
+            flex: 1;
+            flex-shrink: 1;
+            height: 100%;
+
+            .content-f-r-t-e {
+                height: 100%;
+            }
+
+            .flext {
+                display: flex;
+                align-items: center;
+                height: 50%;
+
+                p {
+                    text-transform: capitalize;
+                    color: rgba(0, 0, 0, 0.4);
+                    margin-right: 12px;
+                    white-space: nowrap;
+                }
+
+                span {
+                    color: var(--brand-primary-color);
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+
+    .product-content-description {
+        background-color: #fff;
+        margin-top: 25px;
+        border-radius: 2px;
+        padding: 0.875rem;
+        overflow: hidden;
+
+        .product-page-parents {
+            padding: 0 15px;
+
+            padding-top: 15px;
+        }
+
+        .product-title {
+            background: rgba(0, 0, 0, 0.002);
+            color: rgba(0, 0, 0, 0.87);
+            padding: 10px 0;
+            font-size: 24px;
+
+            text-transform: capitalize;
+        }
+
+        .chiks-eras {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .product-fg-gf {
+            display: flex;
+
+            a {
+                margin-right: 10px;
+            }
+        }
+
+        .chksi-er {
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 15px;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 8.75rem;
+            padding-right: 0.75rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .description-p-tr {
+            padding-left: 8px;
+            white-space: pre-wrap;
+            color: rgba(0, 0, 0, 0.8);
+            font-size: 16px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.7;
+            padding-bottom: 10px;
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+
+    .back-to-home {
+        width: 300px;
+        height: 40px;
+        background-color: rgba(0, 0, 0, 0.08);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: 30px;
+        border-radius: 2px;
     }
 }
 

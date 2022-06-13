@@ -126,7 +126,9 @@ function Nav() {
                                 <div className={cx('text-name')}>{User[0].user.useraccount}</div>
                                 <div className={cx('login-out-and-ld')}>
                                     <ul>
-                                        <li>Tài khoản của tôi</li>
+                                        <Link to={User[0].user.useraccount}>
+                                            <li>Tài khoản của tôi</li>
+                                        </Link>
                                         <li>Đơn mua</li>
                                         <li onClick={handleLoginOut}>Đăng xuất</li>
                                     </ul>

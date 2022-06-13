@@ -72,6 +72,12 @@
     --nr-normal: 0.125rem;
     --nr-overlay: 0.25rem;
     --hover-color: hsla(0, 0%, 100%, 0.7);
+    --focus-indicator-color: rgba(0, 0, 0, 0.87);
+    --focus-indicator-stroke-width: 2px;
+    --focus-indicator-spacing: 4px;
+    --focus-indicator-border-radius: 2px;
+    --brand-primary-color: #ee4d2d;
+    --brand-primary-light-color: rgba(255, 87, 34, 0.1);
 
     --header-height: 120px;
 }

@@ -1,17 +1,19 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './ProductRender.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
-import { QuestionsIcon, ReducerSales, ShoppeBrands, StarIcon, FreeShip } from '@/components/icons';
+import { faAngleRight, faCartArrowDown, faComment } from '@fortawesome/free-solid-svg-icons';
+import { QuestionsIcon, ReducerSales, ShoppeBrands, StarIcon, FreeShip, ShopIcon } from '@/components/icons';
 import { AddProductNewCart } from './../../../Actions/AddProductNewCart';
 
 const cx = classNames.bind(styles);
 
 function RenderPageNew({ data }) {
     const disPatch = useDispatch();
+
+    const CountItemCart = useSelector((state) => state.AddCountCartProdu);
 
     const handleAddCart = (data) => {
         disPatch(AddProductNewCart(data));
@@ -140,7 +142,15 @@ function RenderPageNew({ data }) {
                                     <div className={cx('btn-count')}>
                                         <span className={cx('count-sp')}>Số Lượng</span>
                                         <div className={cx('btn-count-1')}>
-                                            <button className={cx('btn-count-click')}>+</button>
+                                            <button
+                                                className={
+                                                    CountItemCart >= 1
+                                                        ? cx('btn-count-click')
+                                                        : cx('btn-count-click', 'disable')
+                                                }
+                                            >
+                                                -
+                                            </button>
                                             <span>1</span>
                                             <button className={cx('btn-count-click')}>+</button>
                                         </div>
@@ -163,6 +173,103 @@ function RenderPageNew({ data }) {
                     </div>
                 </div>
             </div>
+            <div className={cx('page-shop')}>
+                <div className={cx('left-page-shop')}>
+                    <div className={cx('img-page-shop')}>
+                        <img src={data.avatar} alt="" />
+                        {data.favirote && <div className={cx('banner-favirote-page-shop')}>Yêu Thích</div>}
+                    </div>
+                    <div className={cx('name-online')}>
+                        <div className={cx('name-online-title')}>{data.nameShop}</div>
+                        <div className={cx('name-online-online')}>Online 18 phút trước</div>
+                        <div className={cx('name-online-view-shop')}>
+                            <button>
+                                <FontAwesomeIcon icon={faComment} className={cx('name-online-d-t-r')} />
+                                Chat Ngay
+                            </button>
+                            <button>
+                                <ShopIcon />
+                                Xem Shop
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div className={cx('right-page-shop')}>
+                    <div className={cx('row', 'no-gutters', 'content-f-r-t-e')}>
+                        <div className={cx('m-3', 'l-3')}>
+                            <div className={cx('flext')}>
+                                <p>Đánh Giá</p>
+                                <span>{data.sold}</span>
+                            </div>
+                            <div className={cx('flext')}>
+                                <p>Sản Phẩm</p>
+                                <span>{data.counters}</span>
+                            </div>
+                        </div>
+                        <div className={cx('m-5', 'l-5')}>
+                            <div className={cx('flext')}>
+                                <p>tỉ lệ phản hồi</p>
+                                <span>75%</span>
+                            </div>
+                            <div className={cx('flext')}>
+                                <p>thời gian phản hồi</p>
+                                <span>trong vài giờ</span>
+                            </div>
+                        </div>
+                        <div className={cx('m-4', 'l-4')}>
+                            <div className={cx('flext')}>
+                                <p>tham gia</p>
+                                <span>25 tháng trước</span>
+                            </div>
+                            <div className={cx('flext')}>
+                                <p>Người theo dõi</p>
+                                <span>43,6k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={cx('product-content-description')}>
+                <div className={cx('product-page-parents')}>
+                    <div className={cx('product-title')}>CHI TIẾT SẢN PHẨM</div>
+                    <div className={cx('product-content')}>
+                        <div className={cx('chiks-eras')}>
+                            <label className={cx('chksi-er')}>Danh Mục</label>
+                            <div className={cx('product-fg-gf')}>
+                                <Link to="/">Shoppe</Link>
+                                <p>Thời trang</p>
+                            </div>
+                        </div>
+                        <div className={cx('chiks-eras')}>
+                            <label className={cx('chksi-er')}>Xuất xứ</label>
+                            <div>Việt Nam</div>
+                        </div>
+                        <div className={cx('chiks-eras')}>
+                            <label className={cx('chksi-er')}>Chất liệu</label>
+                            <div>{data.matter}</div>
+                        </div>
+                        <div className={cx('chiks-eras')}>
+                            <label className={cx('chksi-er')}>Kho hàng</label>
+                            <div>{data.counters}</div>
+                        </div>
+                        <div className={cx('chiks-eras')}>
+                            <label className={cx('chksi-er')}>Gửi từ</label>
+                            <div>{data.addRess}</div>
+                        </div>
+                    </div>
+                    <div className={cx('description-r-tr')}>
+                        <div className={cx('product-title')}>Chi Tiết Sản Phẩm</div>
+                        <div className={cx('description-p-tr')}>
+                            {data.description.map((des) => (
+                                <p>{des}</p>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <Link to="/" className={cx('back-to-home')}>
+                Quay về trang chủ ?
+            </Link>
         </div>
     );
 }
