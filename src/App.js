@@ -52,7 +52,7 @@ function App() {
                     }
                 />
                 <Route
-                    path={User.leng > 0 && encodeURI(User[0].user.useraccount)}
+                    path={User.length > 0 && encodeURI(User[0].user.useraccount)}
                     element={<DefaultLayoutAndPages Render={Myinfo} />}
                 />
                 <Route path="/login-register/login" element={<Modal Uselink={Login} title="Đăng nhập" />} />
