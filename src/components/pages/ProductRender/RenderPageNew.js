@@ -58,7 +58,7 @@ function RenderPageNew({ data }) {
                                     </div>
                                 </div>
                                 <div className={cx('comments')}>
-                                    <div className={cx('comments-1')}>{data.sold}</div>
+                                    <div className={cx('comments-1')}>{data.evaluatePeo}</div>
                                     <div className={cx('comments-2')}>Đánh Giá</div>
                                 </div>
                                 <div className={cx('sold')}>
@@ -199,7 +199,7 @@ function RenderPageNew({ data }) {
                         <div className={cx('m-3', 'l-3')}>
                             <div className={cx('flext')}>
                                 <p>Đánh Giá</p>
-                                <span>{data.sold}</span>
+                                <span>{data.evaluateShop}</span>
                             </div>
                             <div className={cx('flext')}>
                                 <p>Sản Phẩm</p>

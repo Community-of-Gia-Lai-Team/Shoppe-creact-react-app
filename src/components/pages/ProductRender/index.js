@@ -1,8 +1,6 @@
 import RenderPageNew from './RenderPageNew';
 
 function ProductRender({ data, path }) {
-    console.log(path);
-
     return (
         <>
             {data.length > 0 &&
