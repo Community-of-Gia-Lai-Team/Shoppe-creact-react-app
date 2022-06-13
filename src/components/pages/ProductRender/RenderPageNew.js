@@ -19,6 +19,8 @@ function RenderPageNew({ data }) {
         disPatch(AddProductNewCart(data));
     };
 
+    document.title = data.name;
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('options')}>

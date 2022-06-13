@@ -11,6 +11,8 @@ const cx = className.bind(styles);
 function ViewRender() {
     const stateProducts = JSON.parse(localStorage.getItem('Products')) || [];
 
+    document.title = 'shoppe giá tốt Tháng 6, 2022 | Mua ngay | Shopee Việt Nam';
+
     return (
         <div className={cx('row')}>
             <div className={cx('m-2')}>
