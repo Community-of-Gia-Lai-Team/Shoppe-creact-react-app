@@ -1,15 +1,91 @@
-import { Link } from 'react-router-dom';
+/* eslint-disable jsx-a11y/iframe-has-title */
+import { Link, Route, Routes } from 'react-router-dom';
+import classNames from 'classnames/bind';
+import { useSelector, useDispatch } from 'react-redux';
+
+import styles from './Myinfo.module.scss';
+import { PencilIcon } from '@/components/icons';
+import UserProfileImg from '@/assets/img/userprofile.png';
+import Profile from './components/Profile';
+import { ActiveBtnNavProfile } from './../../../Actions/ActiveBtnNavProfile';
+
+const cx = classNames.bind(styles);
 
 function Myinfo() {
-    return (
-        <div>
-            <h2>Tài Khoản của bạn </h2>
-            <h2>
-                Trang này đang trong quá trình phát triển xin thông cảm
-                <Link to="/">Nhấn vào đây để quay lại</Link>
-            </h2>
+    const User = JSON.parse(localStorage.getItem('user'))[0].user;
 
-            <p>Cảm ơn bạn đã ghé qua</p>
+    const LinkAvatar = useSelector((state) => state.PathImgAvatar.link);
+    const ListBtnNav = useSelector((state) => state.ActiveNavProfile.list);
+    const IDActiveBtnNav = useSelector((state) => state.ActiveNavProfile.number);
+
+    const dispatCh = useDispatch();
+
+    const handleClick = (index) => {
+        dispatCh(ActiveBtnNavProfile(index));
+    };
+
+    return (
+        <div className={cx('wrapper')}>
+            <div className={cx('left-nav')}>
+                <div className={cx('view-nav')}>
+                    <div className={cx('img-d-r-t')}>
+                        <img
+                            src={LinkAvatar ? LinkAvatar : 'https://cf.shopee.vn/file/95be9e5f9b3d5d20afa8299b20b6c8f0'}
+                            alt=""
+                        />
+                    </div>
+                    <div className={cx('img-avtar')}>
+                        <h3>{User.useraccount}</h3>
+                        <PencilIcon className={cx('icon-pencil')} />
+                        Sửa Hồ Sơ
+                    </div>
+                </div>
+                <div className={cx('nav-content')}>
+                    <div className={cx('tittle')}>
+                        <img src={UserProfileImg} alt="" />
+                        <p>Tài Khoản Của Tôi</p>
+                    </div>
+                    <>
+                        {ListBtnNav.map((data, index) => (
+                            <Link
+                                to={data.to}
+                                className={IDActiveBtnNav === index ? cx('active') : ''}
+                                onClick={() => handleClick(index)}
+                            >
+                                {data.name}
+                            </Link>
+                        ))}
+                    </>
+                </div>
+            </div>
+            <div className={cx('right-nav')}>
+                <Routes>
+                    <Route path="profile" element={<Profile />} />
+                    <Route
+                        path="bank"
+                        element={
+                            <div className={cx('bank')}>
+                                <h2>Bạn chưa liên kết thẻ ngân hàng </h2>
+                            </div>
+                        }
+                    />
+                    <Route
+                        path="address"
+                        element={
+                            <div className={cx('address')}>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14899.524636027088!2d105.85043965245364!3d20.997400385556713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1655388021844!5m2!1svi!2s"
+                                    width="100%"
+                                    height="100%"
+                                    allowFullScreen=""
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                ></iframe>
+                            </div>
+                        }
+                    />
+                </Routes>
+            </div>
         </div>
     );
 }

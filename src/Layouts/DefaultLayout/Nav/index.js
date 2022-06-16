@@ -29,6 +29,7 @@ const cx = classNames.bind(styles);
 function Nav() {
     const UserAccount = useSelector((state) => state.user);
     const ItemCartCount = useSelector((state) => state.AdNewCART.list);
+    const LinkAvatar = useSelector((state) => state.PathImgAvatar.link);
 
     const User = JSON.parse(localStorage.getItem('user')) || UserAccount;
 
@@ -121,12 +122,19 @@ function Nav() {
                         {User.length > 0 ? (
                             <div className={cx('login-true')}>
                                 <div className={cx('img-avatar')}>
-                                    <img src="https://cf.shopee.vn/file/95be9e5f9b3d5d20afa8299b20b6c8f0" alt="" />
+                                    <img
+                                        src={
+                                            LinkAvatar
+                                                ? LinkAvatar
+                                                : 'https://cf.shopee.vn/file/95be9e5f9b3d5d20afa8299b20b6c8f0'
+                                        }
+                                        alt=""
+                                    />
                                 </div>
                                 <div className={cx('text-name')}>{User[0].user.useraccount}</div>
                                 <div className={cx('login-out-and-ld')}>
                                     <ul>
-                                        <Link to={User[0].user.useraccount}>
+                                        <Link to="/account/profile">
                                             <li>Tài khoản của tôi</li>
                                         </Link>
                                         <li>Đơn mua</li>

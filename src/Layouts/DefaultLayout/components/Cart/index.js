@@ -24,7 +24,7 @@ function Cart({ res }) {
                     <h3>Sản phẩm mới thêm</h3>
                     {ItemCart.map((item, index) => (
                         <Link
-                            to={PathActive}
+                            to={`${PathActive}`}
                             className={cx('link-a-t-s')}
                             key={index}
                             onClick={() => handleActivePath(item.link)}
