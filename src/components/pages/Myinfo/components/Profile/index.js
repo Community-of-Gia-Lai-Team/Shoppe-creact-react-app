@@ -100,11 +100,16 @@ function Profile() {
                 <div className={cx('right--modifine')}>
                     <input type="file" placeholder="none" name="file" onChange={(e) => handleChange(e)} />
                 </div>
-                <p>
-                    {LinkAvatar
-                        ? `Link ảnh avatar demo: ${LinkAvatar}`
-                        : 'Dụng lượng file tối đa 1 MB. Định dạng:.JPEG, .PNG'}
-                </p>
+
+                <>
+                    {LinkAvatar ? (
+                        <a href={LinkAvatar} type="_blank">
+                            Link ảnh avatar demo: clickME
+                        </a>
+                    ) : (
+                        <p>'Dụng lượng file tối đa 1 MB. Định dạng:.JPEG, .PNG'</p>
+                    )}
+                </>
             </div>
         </div>
     );

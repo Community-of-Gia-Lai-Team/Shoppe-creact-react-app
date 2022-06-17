@@ -1,0 +1,89 @@
+.disabled {
+    display: none;
+}
+
+.notify-message {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 99999999999;
+}
+
+.notify-message-content {
+    height: 70px;
+    width: 420px;
+    background-color: #ee4d2d;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 24px;
+    right: 20px;
+    border-radius: 4px;
+    animation: FedeInMes ease-in 0.6s;
+}
+
+.notify-icon {
+    padding-left: 10px;
+
+    svg {
+        color: rgba(242, 235, 235, 0.9);
+    }
+}
+
+.notify-body {
+    padding-left: 10px;
+    width: 360px;
+
+    h3 {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.78);
+    }
+}
+
+.notify-close {
+    margin-left: auto;
+    margin-right: 10px;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+.notify-close-done {
+    position: absolute;
+    height: 6px;
+    bottom: -5px;
+    border-radius: 2px;
+    left: 0;
+    width: 100%;
+    background-color: rgb(213, 213, 11);
+    animation: WidthFade linear 4s 0.5s forwards;
+}
+
+@keyframes WidthFade {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
+}
+
+@keyframes FedeInMes {
+    from {
+        transform: translateX(calc(100% + 20px));
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}

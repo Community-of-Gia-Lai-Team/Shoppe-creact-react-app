@@ -48,6 +48,7 @@ function Myinfo() {
                     <>
                         {ListBtnNav.map((data, index) => (
                             <Link
+                                key={index}
                                 to={data.to}
                                 className={IDActiveBtnNav === index ? cx('active') : ''}
                                 onClick={() => handleClick(index)}
@@ -66,6 +67,22 @@ function Myinfo() {
                         element={
                             <div className={cx('bank')}>
                                 <h2>Bạn chưa liên kết thẻ ngân hàng </h2>
+                            </div>
+                        }
+                    />
+                    <Route
+                        path="profile/email"
+                        element={
+                            <div className={cx('bank')}>
+                                <h2>Bạn chưa liên kết với email </h2>
+                            </div>
+                        }
+                    />
+                    <Route
+                        path="profile/phone"
+                        element={
+                            <div className={cx('bank')}>
+                                <h2>Bạn chưa liên kết với số điện thoại </h2>
                             </div>
                         }
                     />

@@ -9,6 +9,7 @@ import ActivePath from './ActiePath';
 import AdNewCART from './AddNewcart';
 import PathImgAvatar from './PathImgAvatar';
 import ActiveNavProfile from './ActiveNavProfile';
+import BuyProduct from './BuyProduct';
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     AdNewCART: AdNewCART,
     PathImgAvatar: PathImgAvatar,
     ActiveNavProfile: ActiveNavProfile,
+    BuyProduct: BuyProduct,
 });
 
 export default rootReducer;

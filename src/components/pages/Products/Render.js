@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import styles from './Products.module.scss';
 import Favirotes from '@/assets/img/yeuthich.png';
@@ -14,6 +14,7 @@ function Render({ data }) {
 
     const handleClickPath = (data) => {
         disPathch(ActivePathADD(data));
+        localStorage.setItem('PathActive', JSON.stringify(data));
     };
 
     return (

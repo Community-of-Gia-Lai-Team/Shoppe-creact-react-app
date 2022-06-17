@@ -9,6 +9,7 @@ import { Login, Register } from '@/components/pages/Modal/form';
 import ViewRender from './Layouts/DefaultLayout/ViewRende';
 import ProductRender from './components/pages/ProductRender/index';
 import Myinfo from './components/pages/Myinfo';
+import CartLayoutPayMent from './Layouts/CartLayoutPayMent';
 
 App.propTypes = {
     Products: propTypes.array,
@@ -27,6 +28,7 @@ function App() {
 
     localStorage.setItem('Products', JSON.stringify(Products));
 
+    const PatActiveDone = JSON.parse(localStorage.getItem('PathActive')) || PathActive;
     const ProductsLocal = JSON.parse(localStorage.getItem('Products')) || [];
 
     useEffect(() => {
@@ -41,11 +43,12 @@ function App() {
         <div className="App">
             <Routes>
                 <Route path="/" element={<DefaultLayoutAndPages Render={ViewRender} />} />
+                <Route path="/cart/*" element={<CartLayoutPayMent />} />
                 <Route
-                    path={PathActive.length > 0 ? PathActive : ''}
+                    path={`/${PatActiveDone.length > 0 ? PatActiveDone : ''}`}
                     element={
                         User.length > 0 ? (
-                            <DefaultLayoutAndPages Render={ProductRender} path={PathActive} data={ProductsLocal} />
+                            <DefaultLayoutAndPages Render={ProductRender} path={PatActiveDone} data={ProductsLocal} />
                         ) : (
                             <Modal Uselink={Login} title="Đăng Nhập" />
                         )

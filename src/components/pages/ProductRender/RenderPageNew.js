@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faCartArrowDown, faComment } from '@fortawesome/free-solid-svg-icons';
 import { QuestionsIcon, ReducerSales, ShoppeBrands, StarIcon, FreeShip, ShopIcon } from '@/components/icons';
 import { AddProductNewCart } from './../../../Actions/AddProductNewCart';
+import { AddProToCart } from './../../../Actions/AddProToCart';
 
 const cx = classNames.bind(styles);
 
@@ -17,6 +18,10 @@ function RenderPageNew({ data }) {
 
     const handleAddCart = (data) => {
         disPatch(AddProductNewCart(data));
+    };
+
+    const handleAddCartBuy = (data) => {
+        disPatch(AddProToCart(data));
     };
 
     document.title = data.name;
@@ -166,7 +171,9 @@ function RenderPageNew({ data }) {
                                             </button>
                                         </div>
                                         <div className={cx('add_product-and-buy-2')}>
-                                            <button>Mua Ngay</button>
+                                            <Link to="/cart">
+                                                <button onClick={() => handleAddCartBuy(data)}>Mua Ngay</button>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
