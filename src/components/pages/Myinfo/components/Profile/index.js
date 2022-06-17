@@ -103,7 +103,7 @@ function Profile() {
 
                 <>
                     {LinkAvatar ? (
-                        <a href={LinkAvatar} type="_blank">
+                        <a href={LinkAvatar} target="_blank" rel="noreferrer">
                             Link ảnh avatar demo: clickME
                         </a>
                     ) : (

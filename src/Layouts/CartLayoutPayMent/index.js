@@ -10,6 +10,7 @@ import NavCart from './NavCart';
 import { ChatIcon, FreeShip } from '@/components/icons';
 import { DoneBuyMentCart } from './../../Actions/DoneBuyMentCart';
 import NotifyMes from '../DefaultLayout/components/NotifyMes';
+import Loading from './NavCart/loading';
 
 const cx = classNames.bind(styles);
 
@@ -173,16 +174,7 @@ function CartLayoutPayMent() {
                 </div>
             </div>
 
-            {DoneBank && (
-                <div className={cx('loading-bank')}>
-                    <div>
-                        <span>
-                            <FontAwesomeIcon icon={faSpinner} />
-                            <p>Hành Vi Đang Được Xử Lí</p>
-                        </span>
-                    </div>
-                </div>
-            )}
+            {DoneBank && <Loading />}
             {DoneBuy && <NotifyMes />}
         </div>
     );
