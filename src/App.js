@@ -10,6 +10,9 @@ import ViewRender from './Layouts/DefaultLayout/ViewRende';
 import ProductRender from './components/pages/ProductRender/index';
 import Myinfo from './components/pages/Myinfo';
 import CartLayoutPayMent from './Layouts/CartLayoutPayMent';
+import QCIMG from '@/assets/img/quangcao.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 App.propTypes = {
     Products: propTypes.array,
@@ -39,6 +42,16 @@ function App() {
             });
     }, []);
 
+    const root = document.querySelector('#root');
+
+    root.onclick = (e) => {
+        if (e.target.closest('.span-qc')) {
+            const QC = e.target.closest('.quang-cao');
+
+            QC.style.display = 'none';
+        }
+    };
+
     return (
         <div className="App">
             <Routes>
@@ -58,6 +71,14 @@ function App() {
                 <Route path="/login-register/login" element={<Modal Uselink={Login} title="Đăng nhập" />} />
                 <Route path="/login-register/register" element={<Modal Uselink={Register} title="Đăng ký" />} />
             </Routes>
+            <div className="quang-cao">
+                <div>
+                    <span className="span-qc">
+                        <FontAwesomeIcon icon={faXmark} />
+                    </span>
+                    <img src={QCIMG} alt="" />
+                </div>
+            </div>
         </div>
     );
 }
