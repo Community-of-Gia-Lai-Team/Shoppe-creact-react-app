@@ -12,6 +12,10 @@ const initialState = {
             name: 'Địa Chỉ',
             to: 'address',
         },
+        {
+            name: 'Video',
+            to: 'video',
+        },
     ],
     number: 0,
 };

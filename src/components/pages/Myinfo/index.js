@@ -63,6 +63,25 @@ function Myinfo() {
                 <Routes>
                     <Route path="profile" element={<Profile />} />
                     <Route
+                        path="video"
+                        element={
+                            <div className={cx('video')}>
+                                <div className={cx('vide-d-r')}>
+                                    <iframe
+                                        width="100%"
+                                        height="100%"
+                                        autoPlay={true}
+                                        src="https://www.youtube.com/embed/JwAI6zPdfq8?list=RDJwAI6zPdfq8"
+                                        title="DẤU MƯA - SHIN NG - MỘT CẢM GIÁC QUÁ LẠ THƯỜNG - NHẠC REMIX HOT TREND TIKTOK 2022"
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                </div>
+                            </div>
+                        }
+                    />
+                    <Route
                         path="bank"
                         element={
                             <div className={cx('bank')}>
