@@ -18,7 +18,7 @@ function Render({ data }) {
     };
 
     return (
-        <div className={cx('col m-2-4-12 l-2-4')}>
+        <div className={cx('col m-2-4-12 l-2-4 c-12')}>
             <Link to={data.link} onClick={() => handleClickPath(data.link)}>
                 <div className={cx('container')}>
                     {data.favirote && <span className={cx('favirote-banner')}>Yêu thích</span>}

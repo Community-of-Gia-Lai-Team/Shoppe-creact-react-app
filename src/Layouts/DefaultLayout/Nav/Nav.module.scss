@@ -476,3 +476,13 @@
         }
     }
 }
+
+@media (max-width: 739px) {
+    .nav-importants {
+        display: none;
+    }
+
+    .search-ad-product {
+        display: none !important;
+    }
+}
