@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -23,6 +23,7 @@ function CartLayoutPayMent() {
     const [checkShop, setCheckShop] = useState(false);
     const [DoneBank, setDoneBank] = useState(false);
     const [DoneBuy, setDoneBuy] = useState(false);
+    const [checkPro, setCheckPro] = useState(false);
 
     const Products = useSelector((state) => state.BuyProduct.list);
 
@@ -30,6 +31,8 @@ function CartLayoutPayMent() {
 
     const handleClickBuy = () => {
         setDoneBank(true);
+        setCheckPro(false);
+        setPrice({ price: 0 });
 
         setTimeout(() => {
             dispatCh(DoneBuyMentCart([]));
@@ -107,6 +110,7 @@ function CartLayoutPayMent() {
                                                         defaultValue={false}
                                                         onChange={(e) => {
                                                             if (e.target.checked) {
+                                                                setCheckPro(!checkPro);
                                                                 setPrice(data);
                                                             }
                                                         }}
@@ -165,9 +169,11 @@ function CartLayoutPayMent() {
                             <div className={cx('d-g-t-e-w')}>
                                 <span>
                                     <span>Tổng Thanh Toán: </span>
-                                    <div>₫{price ? price.price : '0'}</div>
+                                    <div>₫{price > 0 ? price.price : 0}</div>
                                 </span>
-                                <button onClick={() => handleClickBuy()}>Mua Hàng</button>
+                                <button onClick={() => handleClickBuy()} className={!checkPro ? cx('disabled') : ''}>
+                                    Mua Hàng
+                                </button>
                             </div>
                         </div>
                     </div>

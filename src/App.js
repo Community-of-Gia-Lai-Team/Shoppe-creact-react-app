@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
+import firebase from 'firebase/compat/app';
+
 import Modal from '@/components/pages/Modal';
 import DefaultLayoutAndPages from '@/Layouts/DefaultLayout';
 import { Login, Register } from '@/components/pages/Modal/form';
@@ -33,12 +35,16 @@ function App() {
     const ProductsLocal = JSON.parse(localStorage.getItem('Products')) || [];
 
     useEffect(() => {
-        fetch('https://api-shope-done.herokuapp.com/products')
+        const ProductsAPI = process.env.REACT_APP_API_PRODUCTS;
+
+        fetch(ProductsAPI)
             .then((response) => response.json())
             .then((response) => {
                 setProducts(response);
             });
     }, []);
+
+    // Listen to the Firebase Auth state and set the local state.
 
     const root = document.querySelector('#root');
 

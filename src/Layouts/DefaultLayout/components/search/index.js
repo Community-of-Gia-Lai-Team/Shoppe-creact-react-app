@@ -1,7 +1,6 @@
 import classNames from 'classnames/bind';
 
 import styles from './Seach.module.scss';
-import TestImg from '@/assets/img/qrdownload.png';
 
 const cx = classNames.bind(styles);
 

@@ -1,5 +1,4 @@
 import className from 'classnames/bind';
-import { useEffect, useState } from 'react';
 
 import styles from './DefaultLayout.module.scss';
 import Category from './components/Category';
