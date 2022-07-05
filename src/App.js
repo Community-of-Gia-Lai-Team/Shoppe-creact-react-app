@@ -74,6 +74,7 @@ function App() {
             }
         });
         return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     // Listen to the Firebase Auth state and set the local state.

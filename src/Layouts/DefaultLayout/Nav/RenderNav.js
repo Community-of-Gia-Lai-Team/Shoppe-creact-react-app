@@ -5,6 +5,8 @@ import { faBell, faCircleQuestion, faLanguage, faAngleDown } from '@fortawesome/
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
+import firebase from 'firebase/compat/app';
+
 import styles from './Nav.module.scss';
 import QrImg from '@/assets/img/qrdownload.png';
 import AppStoreImg from '@/assets/img/appstore.png';
@@ -18,17 +20,9 @@ import NotifyCart from '@/Layouts/DefaultLayout/components/NotifyCart';
 const cx = classNames.bind(styles);
 
 function RenderNav() {
-    const UserAccount = useSelector((state) => state.user);
-    const LinkAvatar = useSelector((state) => state.PathImgAvatar.link);
-
     const User = useSelector((state) => state.user);
 
     const disPathCh = useDispatch();
-
-    const handleLoginOut = () => {
-        localStorage.setItem('user', JSON.stringify([]));
-        disPathCh(addNewUser([]));
-    };
 
     return (
         <div className={cx('nav-importants')}>
@@ -107,13 +101,17 @@ function RenderNav() {
                         <div className={cx('text-name')}>{User[0]._delegate.displayName}</div>
                         <div className={cx('login-out-and-ld')}>
                             <ul>
-                                <Link to="/a.ccount/profile">
+                                <Link to="/account/profile">
                                     <li>Tài khoản của tôi</li>
                                 </Link>
                                 <Link to="/cart/">
                                     <li>Đơn mua</li>
                                 </Link>
-                                <li onClick={handleLoginOut}>Đăng xuất</li>
+                                <li>
+                                    <a onClick={() => firebase.auth().signOut()} href="/">
+                                        Đăng xuất
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>

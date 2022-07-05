@@ -12,8 +12,6 @@ import { ActiveBtnNavProfile } from './../../../Actions/ActiveBtnNavProfile';
 const cx = classNames.bind(styles);
 
 function Myinfo() {
-    const User = JSON.parse(localStorage.getItem('user'))[0].user;
-
     const LinkAvatar = useSelector((state) => state.PathImgAvatar.link);
     const ListBtnNav = useSelector((state) => state.ActiveNavProfile.list);
     const IDActiveBtnNav = useSelector((state) => state.ActiveNavProfile.number);
@@ -35,7 +33,7 @@ function Myinfo() {
                         />
                     </div>
                     <div className={cx('img-avtar')}>
-                        <h3>{User.useraccount}</h3>
+                        {/* <h3>{User.useraccount}</h3> */}
                         <PencilIcon className={cx('icon-pencil')} />
                         Sửa Hồ Sơ
                     </div>

@@ -8,8 +8,6 @@ import { ActiveClickimgAvatar } from './../../../../../Actions/ActiveClickimgAva
 const cx = classNames.bind(styles);
 
 function Profile() {
-    const User = JSON.parse(localStorage.getItem('user'))[0].user;
-
     const LinkAvatar = useSelector((state) => state.PathImgAvatar.link);
 
     const dispatCh = useDispatch();
@@ -30,7 +28,7 @@ function Profile() {
                 <div className={cx('profile-content')}>
                     <div className={cx('profile-chuk')}>
                         <label>Tên Đăng Nhập</label>
-                        <div className={cx('profile-content-g-t-er')}>{User.useraccount}</div>
+                        <div className={cx('profile-content-g-t-er')}>name</div>
                     </div>
                     <div className={cx('profile-chuk')}>
                         <label>Tên</label>
