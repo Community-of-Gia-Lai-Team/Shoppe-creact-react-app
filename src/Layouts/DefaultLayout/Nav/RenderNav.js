@@ -21,7 +21,7 @@ function RenderNav() {
     const UserAccount = useSelector((state) => state.user);
     const LinkAvatar = useSelector((state) => state.PathImgAvatar.link);
 
-    const User = JSON.parse(localStorage.getItem('user')) || UserAccount;
+    const User = useSelector((state) => state.user);
 
     const disPathCh = useDispatch();
 
@@ -111,10 +111,10 @@ function RenderNav() {
                                 alt=""
                             />
                         </div>
-                        <div className={cx('text-name')}>{User[0].user.useraccount}</div>
+                        <div className={cx('text-name')}>{User[0]._delegate.displayName}</div>
                         <div className={cx('login-out-and-ld')}>
                             <ul>
-                                <Link to="/account/profile">
+                                <Link to="/a.ccount/profile">
                                     <li>Tài khoản của tôi</li>
                                 </Link>
                                 <Link to="/cart/">
