@@ -22,6 +22,14 @@ App.defaultProps = {
     Products: [],
 };
 
+// Configure Firebase.
+const config = {
+    apiKey: process.env.REACT_APP_APIKEY,
+    authDomain: process.env.REACT_APP_DOMAIN,
+    // ...
+};
+firebase.initializeApp(config);
+
 function App() {
     const PathActive = useSelector((state) => state.ActivePath.list);
 
@@ -42,6 +50,22 @@ function App() {
             .then((response) => {
                 setProducts(response);
             });
+    }, []);
+
+    useEffect(() => {
+        const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
+            if (!user) {
+                console.log('User is not login');
+                return;
+            } else {
+                console.log('User Name: ', user.displayName);
+
+                const token = await user.getToken();
+
+                console.log('Token: ', token);
+            }
+        });
+        return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
     }, []);
 
     // Listen to the Firebase Auth state and set the local state.
