@@ -22,14 +22,16 @@ const uiConfig = {
     ],
 };
 
+console.log(firebase.auth);
+
 function Login({ user }) {
     return (
         <div>
             <form className={cx('wrapper')}>
                 <div className={cx('parents', 'login')}>
                     <div className={cx('parents-container')}>
-                        <h1>My App</h1>
-                        <p>Please sign-in:</p>
+                        <h1>Shope Demo</h1>
+                        <p>Đăng Nhập Tài Khoản Của Bạn</p>
                         <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
                     </div>
                 </div>
