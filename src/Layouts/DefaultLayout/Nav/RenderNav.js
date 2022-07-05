@@ -102,14 +102,7 @@ function RenderNav() {
                 {User.length > 0 ? (
                     <div className={cx('login-true')}>
                         <div className={cx('img-avatar')}>
-                            <img
-                                src={
-                                    LinkAvatar
-                                        ? LinkAvatar
-                                        : 'https://cf.shopee.vn/file/95be9e5f9b3d5d20afa8299b20b6c8f0'
-                                }
-                                alt=""
-                            />
+                            <img src={User[0]._delegate.photoURL} alt="" />
                         </div>
                         <div className={cx('text-name')}>{User[0]._delegate.displayName}</div>
                         <div className={cx('login-out-and-ld')}>
