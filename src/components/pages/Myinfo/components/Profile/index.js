@@ -1,15 +1,16 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import styles from './Profile.module.scss';
-import { ActiveClickimgAvatar } from './../../../../../Actions/ActiveClickimgAvatar';
 
 const cx = classNames.bind(styles);
 
 function Profile() {
     const LinkAvatar = useSelector((state) => state.PathImgAvatar.link);
-    const user = useSelector((state) => state.user);
+    const User = useSelector((state) => state.user);
+
+    const user = JSON.parse(localStorage.getItem('userSave')) || User[0];
 
     return (
         <div className={cx('wrapper')}>
@@ -21,12 +22,12 @@ function Profile() {
                 <div className={cx('profile-content')}>
                     <div className={cx('profile-chuk')}>
                         <label>Tên Đăng Nhập</label>
-                        <div className={cx('profile-content-g-t-er')}>{user[0]._delegate.email || 'bandadangnhap'}</div>
+                        <div className={cx('profile-content-g-t-er')}>{user.email || 'bandadangnhap'}</div>
                     </div>
                     <div className={cx('profile-chuk')}>
                         <label>Tên</label>
                         <div>
-                            <input defaultValue={user[0]._delegate.displayName} />
+                            <input defaultValue={user.displayName || null} />
                         </div>
                     </div>
                     <div className={cx('profile-chuk')}>
@@ -83,7 +84,7 @@ function Profile() {
             </div>
             <div className={cx('right')}>
                 <div className={cx('right-img')}>
-                    <img src={user[0]._delegate.photoURL} alt="" />
+                    <img src={user.photoURL || null} alt="" />
                 </div>
                 <div className={cx('right--modifine')}>
                     <input type="file" placeholder="none" name="file" />

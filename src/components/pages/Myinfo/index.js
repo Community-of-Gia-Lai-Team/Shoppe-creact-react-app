@@ -15,7 +15,7 @@ function Myinfo() {
     const LinkAvatar = useSelector((state) => state.PathImgAvatar.link);
     const ListBtnNav = useSelector((state) => state.ActiveNavProfile.list);
     const IDActiveBtnNav = useSelector((state) => state.ActiveNavProfile.number);
-    const user = useSelector((state) => state.user);
+    const User = useSelector((state) => state.user);
 
     const dispatCh = useDispatch();
 
@@ -23,22 +23,26 @@ function Myinfo() {
         dispatCh(ActiveBtnNavProfile(index));
     };
 
+    const user = JSON.parse(localStorage.getItem('userSave')) || User[0];
+
+    console.log(user.photoURL);
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('left-nav')}>
                 <div className={cx('view-nav')}>
                     <div className={cx('img-d-r-t')}>
-                        <img src={user[0]._delegate.photoURL} alt="" />
+                        <img src={user.photoURL} alt="" />
                     </div>
                     <div className={cx('img-avtar')}>
-                        <h3>{user[0]._delegate.displayName}</h3>
+                        <h3>{user.displayName}</h3>
                         <PencilIcon className={cx('icon-pencil')} />
                         Sửa Hồ Sơ
                     </div>
                 </div>
                 <div className={cx('nav-content')}>
                     <div className={cx('tittle')}>
-                        <img src={user[0]._delegate.photoURL} alt="" />
+                        <img src={user.photoURL} alt="" />
                         <p>Tài Khoản Của Tôi</p>
                     </div>
                     <>

@@ -66,6 +66,8 @@ function App() {
             } else {
                 disPatch(addNewUser(user));
 
+                localStorage.setItem('userSave', JSON.stringify(user));
+
                 console.log('User Name: ', user.displayName);
 
                 const token = await user.getToken();
