@@ -83,10 +83,7 @@ function Profile() {
             </div>
             <div className={cx('right')}>
                 <div className={cx('right-img')}>
-                    <img
-                        src={LinkAvatar ? LinkAvatar : 'https://cf.shopee.vn/file/95be9e5f9b3d5d20afa8299b20b6c8f0'}
-                        alt=""
-                    />
+                    <img src={user[0]._delegate.photoURL} alt="" />
                 </div>
                 <div className={cx('right--modifine')}>
                     <input type="file" placeholder="none" name="file" />

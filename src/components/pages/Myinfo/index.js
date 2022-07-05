@@ -31,7 +31,7 @@ function Myinfo() {
                         <img src={user[0]._delegate.photoURL} alt="" />
                     </div>
                     <div className={cx('img-avtar')}>
-                        {/* <h3>{User.useraccount}</h3> */}
+                        <h3>{user[0]._delegate.displayName}</h3>
                         <PencilIcon className={cx('icon-pencil')} />
                         Sửa Hồ Sơ
                     </div>
