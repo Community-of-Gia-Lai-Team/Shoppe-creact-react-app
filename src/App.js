@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import { Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import firebase from 'firebase/compat/app';
 
@@ -13,6 +13,7 @@ import ProductRender from './components/pages/ProductRender/index';
 import Myinfo from './components/pages/Myinfo';
 import CartLayoutPayMent from './Layouts/CartLayoutPayMent';
 import QC from './components/pages/QC';
+import { addNewUser } from '@/Actions/user';
 
 App.propTypes = {
     Products: propTypes.array,
@@ -31,9 +32,11 @@ const config = {
 firebase.initializeApp(config);
 
 function App() {
+    const disPatch = useDispatch();
+
     const PathActive = useSelector((state) => state.ActivePath.list);
 
-    const User = JSON.parse(localStorage.getItem('user')) || [];
+    const user = useSelector((state) => state.user);
 
     const [Products, setProducts] = useState([]);
 
@@ -41,6 +44,8 @@ function App() {
 
     const PatActiveDone = JSON.parse(localStorage.getItem('PathActive')) || PathActive;
     const ProductsLocal = JSON.parse(localStorage.getItem('Products')) || [];
+
+    console.log(user);
 
     useEffect(() => {
         const ProductsAPI = process.env.REACT_APP_API_PRODUCTS;
@@ -58,6 +63,8 @@ function App() {
                 console.log('User is not login');
                 return;
             } else {
+                disPatch(addNewUser(user));
+
                 console.log('User Name: ', user.displayName);
 
                 const token = await user.getToken();
@@ -88,7 +95,7 @@ function App() {
                 <Route
                     path={`/${PatActiveDone.length > 0 ? PatActiveDone : ''}`}
                     element={
-                        User.length > 0 ? (
+                        user.length > 0 ? (
                             <DefaultLayoutAndPages Render={ProductRender} path={PatActiveDone} data={ProductsLocal} />
                         ) : (
                             <Modal Uselink={Login} title="Đăng Nhập" />
@@ -100,7 +107,7 @@ function App() {
                 <Route path="/login-register/register" element={<Modal Uselink={Register} title="Đăng ký" />} />
             </Routes>
 
-            {window.performance.navigation.type === 1 && <QC />}
+            {/* {window.performance.navigation.type === 1 && <QC />} */}
         </div>
     );
 }
