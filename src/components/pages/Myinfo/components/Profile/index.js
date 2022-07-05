@@ -9,14 +9,7 @@ const cx = classNames.bind(styles);
 
 function Profile() {
     const LinkAvatar = useSelector((state) => state.PathImgAvatar.link);
-
-    const dispatCh = useDispatch();
-
-    const handleChange = (e) => {
-        const file = e.target.files[0];
-
-        dispatCh(ActiveClickimgAvatar(URL.createObjectURL(file)));
-    };
+    const user = useSelector((state) => state.user);
 
     return (
         <div className={cx('wrapper')}>
@@ -28,12 +21,12 @@ function Profile() {
                 <div className={cx('profile-content')}>
                     <div className={cx('profile-chuk')}>
                         <label>Tên Đăng Nhập</label>
-                        <div className={cx('profile-content-g-t-er')}>name</div>
+                        <div className={cx('profile-content-g-t-er')}>{user[0]._delegate.email || 'bandadangnhap'}</div>
                     </div>
                     <div className={cx('profile-chuk')}>
                         <label>Tên</label>
                         <div>
-                            <input defaultValue="Trường Sơn" />
+                            <input defaultValue={user[0]._delegate.displayName} />
                         </div>
                     </div>
                     <div className={cx('profile-chuk')}>
@@ -96,12 +89,12 @@ function Profile() {
                     />
                 </div>
                 <div className={cx('right--modifine')}>
-                    <input type="file" placeholder="none" name="file" onChange={(e) => handleChange(e)} />
+                    <input type="file" placeholder="none" name="file" />
                 </div>
 
                 <>
                     {LinkAvatar ? (
-                        <a href={LinkAvatar} target="_blank" rel="noreferrer">
+                        <a href="/" target="_blank" rel="noreferrer">
                             Link ảnh avatar demo: clickME
                         </a>
                     ) : (

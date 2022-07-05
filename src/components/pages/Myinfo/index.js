@@ -15,6 +15,7 @@ function Myinfo() {
     const LinkAvatar = useSelector((state) => state.PathImgAvatar.link);
     const ListBtnNav = useSelector((state) => state.ActiveNavProfile.list);
     const IDActiveBtnNav = useSelector((state) => state.ActiveNavProfile.number);
+    const user = useSelector((state) => state.user);
 
     const dispatCh = useDispatch();
 
@@ -27,10 +28,7 @@ function Myinfo() {
             <div className={cx('left-nav')}>
                 <div className={cx('view-nav')}>
                     <div className={cx('img-d-r-t')}>
-                        <img
-                            src={LinkAvatar ? LinkAvatar : 'https://cf.shopee.vn/file/95be9e5f9b3d5d20afa8299b20b6c8f0'}
-                            alt=""
-                        />
+                        <img src={user[0]._delegate.photoURL} alt="" />
                     </div>
                     <div className={cx('img-avtar')}>
                         {/* <h3>{User.useraccount}</h3> */}
@@ -40,7 +38,7 @@ function Myinfo() {
                 </div>
                 <div className={cx('nav-content')}>
                     <div className={cx('tittle')}>
-                        <img src={UserProfileImg} alt="" />
+                        <img src={user[0]._delegate.photoURL} alt="" />
                         <p>Tài Khoản Của Tôi</p>
                     </div>
                     <>
