@@ -102,7 +102,7 @@ function App() {
                 <Route path="/login-register/register" element={<Modal Uselink={Register} title="Đăng ký" />} />
             </Routes>
 
-            {window.performance.navigation.type === 1 && <QC />} 
+            {window.performance.navigation.type === 1 && <QC />}
         </div>
     );
 }

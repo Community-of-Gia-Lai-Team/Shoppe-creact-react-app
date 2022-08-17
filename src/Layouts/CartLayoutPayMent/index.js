@@ -23,7 +23,7 @@ function CartLayoutPayMent() {
     const [checkShop, setCheckShop] = useState(false);
     const [DoneBank, setDoneBank] = useState(false);
     const [DoneBuy, setDoneBuy] = useState(false);
-    const [checkPro, setCheckPro] = useState(false);
+    const [checkPro, setCheckPro] = useState(true);
 
     const Products = useSelector((state) => state.BuyProduct.list);
 
@@ -32,7 +32,7 @@ function CartLayoutPayMent() {
     const handleClickBuy = () => {
         setDoneBank(true);
         setCheckPro(false);
-        setPrice({ price: 0 });
+        setPrice({ price: Products.price });
 
         setTimeout(() => {
             dispatCh(DoneBuyMentCart([]));
@@ -114,10 +114,11 @@ function CartLayoutPayMent() {
                                                                 setPrice(data);
                                                             }
                                                         }}
+                                                        defaultChecked={true}
                                                     />
                                                     <div
                                                         style={{
-                                                            backgroundImage: `url(${data.img})`,
+                                                            backgroundImage: `url(${data.image})`,
                                                             width: '80px',
                                                             height: '80px',
                                                             backgroundPosition: '50%',
@@ -169,9 +170,12 @@ function CartLayoutPayMent() {
                             <div className={cx('d-g-t-e-w')}>
                                 <span>
                                     <span>Tổng Thanh Toán: </span>
-                                    <div>₫{price > 0 ? price.price : 0}</div>
+                                    <div>₫{+price.price > 0 ? +price.price : 'Có một chút lỗi xảy ra'}</div>
                                 </span>
-                                <button onClick={() => handleClickBuy()} className={!checkPro ? cx('disabled') : ''}>
+                                <button
+                                    onClick={() => handleClickBuy()}
+                                    className={checkPro === false ? cx('disabled') : ''}
+                                >
                                     Mua Hàng
                                 </button>
                             </div>
