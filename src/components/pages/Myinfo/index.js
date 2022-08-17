@@ -5,9 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import styles from './Myinfo.module.scss';
 import { PencilIcon } from '@/components/icons';
-import UserProfileImg from '@/assets/img/userprofile.png';
 import Profile from './components/Profile';
 import { ActiveBtnNavProfile } from './../../../Actions/ActiveBtnNavProfile';
+import FormCreateNewProduct from './components/formCreate';
 
 const cx = classNames.bind(styles);
 
@@ -22,9 +22,7 @@ function Myinfo() {
         dispatCh(ActiveBtnNavProfile(index));
     };
 
-    const user = JSON.parse(localStorage.getItem('userSave')) || User[0];
-
-    console.log(user.photoURL);
+    const user = JSON.parse(localStorage.getItem('userSave')) || User[0] || {};
 
     return (
         <div className={cx('wrapper')}>
@@ -88,6 +86,7 @@ function Myinfo() {
                             </div>
                         }
                     />
+                    <Route path="create-products" element={<FormCreateNewProduct />} />
                     <Route
                         path="profile/email"
                         element={

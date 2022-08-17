@@ -16,6 +16,10 @@ const initialState = {
             name: 'Video',
             to: 'video',
         },
+        {
+            name: 'Tạo Sản Phẩm',
+            to: 'create-products',
+        },
     ],
     number: 0,
 };

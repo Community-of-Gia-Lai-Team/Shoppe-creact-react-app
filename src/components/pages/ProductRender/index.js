@@ -1,15 +1,38 @@
+import { getDetailProducts } from '@/services/Product';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import RenderPageNew from './RenderPageNew';
 
-function ProductRender({ data, path }) {
+function ProductRender(props) {
+    const [data, setData] = useState([]);
+
+    let id = useSelector((state) => state.PathImgAvatar.id);
+
+    if (!id) {
+        id = JSON.parse(localStorage.getItem('ID'));
+    }
+
+    useEffect(() => {
+        try {
+            const FetCh = async () => {
+                const Res = await getDetailProducts(id);
+
+                if (Res && Res.errCode === 0) {
+                    setData(Res.data);
+                }
+            };
+
+            FetCh();
+        } catch (error) {
+            alert('co loi xay ra');
+        }
+    }, [id]);
+
+    console.log('check data :', data);
+
     return (
         <>
-            {data.length > 0 &&
-                // eslint-disable-next-line array-callback-return
-                data.map((res, index) => {
-                    if (res.link === path) {
-                        return <RenderPageNew data={res} key={index} />;
-                    }
-                })}
+            <RenderPageNew data={data} />
         </>
     );
 }

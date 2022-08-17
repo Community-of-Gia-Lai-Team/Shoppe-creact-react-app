@@ -22,8 +22,6 @@ const uiConfig = {
     ],
 };
 
-console.log(firebase.auth);
-
 function Login({ user }) {
     return (
         <div>

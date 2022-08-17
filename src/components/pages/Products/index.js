@@ -35,55 +35,42 @@ function Products({ Res }) {
         disPatch(ActiveProductsPages(index));
     };
 
+    console.log('check Res12 :', Res);
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('row')}>
                 {Res.length > 0 &&
                     // eslint-disable-next-line array-callback-return
                     Res.map((data, index) => {
-                        if (IDActiveProduct === 0) {
-                            if (data) {
-                                if (IdActiveProductsPages === 0) {
-                                    if (index < 10) {
-                                        return <Render data={data} key={data.id} />;
-                                    }
-                                }
-                                if (IdActiveProductsPages === 1) {
-                                    if (index > 10) {
-                                        return <Render data={data} key={data.id} />;
-                                    }
-                                }
-                            }
-                        }
-                        if (IDActiveProduct === 1) {
-                            if (data.favirote && data.reducerprice.length > 0) {
-                                if (IdActiveProductsPages === 0) {
-                                    if (index < 10) {
-                                        return <Render data={data} key={data.id} />;
-                                    }
-                                }
-                                if (IdActiveProductsPages === 1) {
-                                    if (index > 10) {
-                                        return <Render data={data} key={data.id} />;
-                                    }
-                                }
-                            }
-                        }
+                        return <Render data={data} key={data.id} />;
 
-                        if (IDActiveProduct === 2) {
-                            if (data.favirote) {
-                                if (IdActiveProductsPages === 0) {
-                                    if (index < 10) {
-                                        return <Render data={data} key={data.id} />;
-                                    }
-                                }
-                                if (IdActiveProductsPages === 1) {
-                                    if (index > 10) {
-                                        return <Render data={data} key={data.id} />;
-                                    }
-                                }
-                            }
-                        }
+                        // if (IDActiveProduct === 0) {
+                        //     if (data) {
+                        //         if (IdActiveProductsPages === 0) {
+                        //             <Render data={data} key={data.id} />;
+                        //         }
+                        //         if (IdActiveProductsPages === 1) {
+                        //             <Render data={data} key={data.id} />;
+                        //         }
+                        //     }
+                        // }
+                        // if (IDActiveProduct === 1) {
+                        //     if (data.favirote && data.reducerprice.length > 0) {
+                        //         if (IdActiveProductsPages === 0) {
+                        //             <Render data={data} key={data.id} />;
+                        //         }
+                        //         if (IdActiveProductsPages === 1) {
+                        //             <Render data={data} key={data.id} />;
+                        //         }
+                        //     }
+                        // }
+
+                        // if (IDActiveProduct === 2) {
+                        //     if (data.favirote) {
+                        //         <Render data={data} key={data.id} />;
+                        //     }
+                        // }
                     })}
             </div>
             <div className={cx('next-page')}>

@@ -14,6 +14,9 @@ import Myinfo from './components/pages/Myinfo';
 import CartLayoutPayMent from './Layouts/CartLayoutPayMent';
 import QC from './components/pages/QC';
 import { addNewUser } from '@/Actions/user';
+import TestAPI from './components/Test';
+import { getAllProducts } from './services/Product';
+import { emitter } from './emitter';
 
 App.propTypes = {
     Products: propTypes.array,
@@ -34,29 +37,14 @@ firebase.initializeApp(config);
 function App() {
     const disPatch = useDispatch();
 
-    const PathActive = useSelector((state) => state.ActivePath.list);
-
     // user login to save
     const user = useSelector((state) => state.user);
 
     const [Products, setProducts] = useState([]);
 
-    localStorage.setItem('Products', JSON.stringify(Products));
-
-    const PatActiveDone = JSON.parse(localStorage.getItem('PathActive')) || PathActive;
-    const ProductsLocal = JSON.parse(localStorage.getItem('Products')) || [];
-
-    console.log(user);
-
-    useEffect(() => {
-        const ProductsAPI = process.env.REACT_APP_API_PRODUCTS;
-
-        fetch(ProductsAPI)
-            .then((response) => response.json())
-            .then((response) => {
-                setProducts(response);
-            });
-    }, []);
+    emitter.on('CALL_API_AGAIN_LOADING_PRODUCT', (data) => {
+        setProducts(data);
+    });
 
     useEffect(() => {
         const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
@@ -66,13 +54,13 @@ function App() {
             } else {
                 disPatch(addNewUser(user));
 
-                localStorage.setItem('userSave', JSON.stringify(user));
+                // localStorage.setItem('userSave', JSON.stringify(user));
 
-                console.log('User Name: ', user.displayName);
+                // console.log('User Name: ', user.displayName);
 
-                const token = await user.getToken();
+                // const token = await user.getToken();
 
-                console.log('Token: ', token);
+                // console.log('Token: ', token);
             }
         });
         return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
@@ -91,27 +79,30 @@ function App() {
         }
     };
 
+    console.log('check state :', Products);
+
     return (
         <div className="App">
             <Routes>
                 <Route path="/" element={<DefaultLayoutAndPages Render={ViewRender} />} />
                 <Route path="/cart/*" element={<CartLayoutPayMent />} />
                 <Route
-                    path={`/${PatActiveDone.length > 0 ? PatActiveDone : ''}`}
+                    path="/detail-product/*"
                     element={
                         user.length > 0 ? (
-                            <DefaultLayoutAndPages Render={ProductRender} path={PatActiveDone} data={ProductsLocal} />
+                            <DefaultLayoutAndPages Render={ProductRender} />
                         ) : (
                             <Modal Uselink={Login} title="Đăng Nhập" />
                         )
                     }
                 />
                 <Route path="/account/*" element={<DefaultLayoutAndPages Render={Myinfo} />} />
+                <Route path="/testAPi" element={<TestAPI />} />
                 <Route path="/login-register/login" element={<Modal Uselink={Login} title="Đăng nhập" />} />
                 <Route path="/login-register/register" element={<Modal Uselink={Register} title="Đăng ký" />} />
             </Routes>
 
-            {window.performance.navigation.type === 1 && <QC />}
+            {/* {window.performance.navigation.type === 1 && <QC />} */}
         </div>
     );
 }

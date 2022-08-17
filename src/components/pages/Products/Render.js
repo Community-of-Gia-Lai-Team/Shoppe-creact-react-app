@@ -1,27 +1,28 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 
 import styles from './Products.module.scss';
 import Favirotes from '@/assets/img/yeuthich.png';
 import { FreeShip, PricesReducerLeft, PricesReducerRight, StarIcon } from '@/components/icons';
-import { ActivePathADD } from '@/Actions/ActivePathActions';
+import { useDispatch } from 'react-redux';
+import { addIdNewProActive } from '@/Actions/IDPROACTIVE';
 
 const cx = classNames.bind(styles);
 
 function Render({ data }) {
-    const disPathch = useDispatch();
+    const disPatch = useDispatch();
 
-    const handleClickPath = (data) => {
-        disPathch(ActivePathADD(data));
-        localStorage.setItem('PathActive', JSON.stringify(data));
+    const DispatID = (id) => {
+        localStorage.setItem('ID', JSON.stringify(id));
+
+        disPatch(addIdNewProActive(id));
     };
 
     return (
         <div className={cx('col m-2-4-12 l-2-4 c-12')}>
-            <Link to={data.link} onClick={() => handleClickPath(data.link)}>
+            <Link to={`/detail-product/${data.link}`} onClick={() => DispatID(data.id)}>
                 <div className={cx('container')}>
-                    {data.favirote && <span className={cx('favirote-banner')}>Yêu thích</span>}
+                    {data.favirote === 1 && <span className={cx('favirote-banner')}>Yêu thích</span>}
                     {data.reducerprice.length > 0 && (
                         <div className={cx('banner-percent-reducer')}>
                             <span>{data.reducerprice}%</span>
@@ -30,7 +31,7 @@ function Render({ data }) {
                     )}
                     <div className={cx('img-and-favirote')}>
                         <img className={cx('img-favirote-default')} src={Favirotes} alt="" />
-                        <img className={cx('img-products')} src={data.img} alt=""></img>
+                        <img className={cx('img-products')} src={data.image} alt=""></img>
                     </div>
                     <div className={cx('introduce-product')}>
                         <div className={cx('name-title-product')}>{data.name}</div>
@@ -62,7 +63,7 @@ function Render({ data }) {
                             </div>
                             <div className={cx('da-ban-count')}>Đã bán {data.sold}</div>
                         </div>
-                        <div className={cx('addRess')}>{data.addRess}</div>
+                        <div className={cx('addRess')}>{data.address}</div>
                     </div>
                 </div>
             </Link>

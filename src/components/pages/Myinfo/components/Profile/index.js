@@ -10,7 +10,7 @@ function Profile() {
     const LinkAvatar = useSelector((state) => state.PathImgAvatar.link);
     const User = useSelector((state) => state.user);
 
-    const user = JSON.parse(localStorage.getItem('userSave')) || User[0];
+    const user = JSON.parse(localStorage.getItem('userSave')) || User[0] || {};
 
     return (
         <div className={cx('wrapper')}>
