@@ -12,7 +12,6 @@ import { ActiveBtnNavProfile } from './../../../Actions/ActiveBtnNavProfile';
 const cx = classNames.bind(styles);
 
 function Myinfo() {
-    const LinkAvatar = useSelector((state) => state.PathImgAvatar.link);
     const ListBtnNav = useSelector((state) => state.ActiveNavProfile.list);
     const IDActiveBtnNav = useSelector((state) => state.ActiveNavProfile.number);
     const User = useSelector((state) => state.user);
